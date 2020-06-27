@@ -1,12 +1,12 @@
 /* sweetScroll load */
 document.addEventListener("DOMContentLoaded", function () {
-  const sweetScroll = new SweetScroll({/* some options */});
+  sweetScroll = new SweetScroll({/* some options */});
 
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS('particles-js', {
     "particles": {
       "number": {
-        "value": 160,
+        "value": 80,
         "density": {
           "enable": true,
           "value_area": 500
