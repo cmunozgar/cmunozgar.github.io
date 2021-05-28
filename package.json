@@ -1,12 +1,14 @@
 {
-  "name": "jekyll-theme-minimal-resume",
+  "name": "cmunozgar-website",
   "version": "1.0.0",
-  "description": "This is a simple Jekyll theme for a minimal resume website.",
+  "description": "This is the website for cmunozgar.com",
   "main": "index.js",
   "scripts": {
+    "start": "gulp watch",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mauricio Urraco <mauriurraco@gmail.com>",
+  "author": "Carlos Muñoz <cmunozgar@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.18.6",
