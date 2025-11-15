@@ -1,0 +1,19 @@
+{
+  "name": "carlos-munoz-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Carlos Muñoz",
+  "scripts": {
+    "start": "gulp",
+    "serve": "gulp serve"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website"
+  ],
+  "author": "Carlos Muñoz",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "gulp": "^5.0.0"
+  }
+}
