@@ -1,3 +1,113 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Carlos Muñoz - Senior Product Engineer</title>
+    <meta
+      name="description"
+      content="Senior Product Engineer specializing in full-stack development, product strategy, and team leadership."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="assets/favicon.png"
+    />
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main">
+      <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+          <div class="header-content">
+            <div class="profile-section">
+              <img
+                src="https://secure.gravatar.com/avatar/9f41eeb02505531a36b3429e78bc455d?size=360"
+                alt="Carlos Muñoz"
+                class="profile-image"
+              />
+            </div>
+            <div class="intro-section">
+              <h1 class="name">Carlos Muñoz</h1>
+              <p class="tagline">Senior Product Engineer</p>
+              <p class="bio">
+                I'm a Senior Product Engineer at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>, where I build features that help thousands of businesses manage their social media presence. With over 15 years of experience spanning full-stack development, engineering leadership, and scalable infrastructure, I'm passionate about crafting solutions that balance technical excellence with real user impact.
+              </p>
+              <p class="bio">
+                This is where I share my journey in tech—from weekly updates about what I'm building and learning, to deep dives on product engineering decisions.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Latest Update Section -->
+        <section class="building-section">
+          <div class="section-header">
+            <h2 class="section-heading">Latest Update</h2>
+            <a href="/updates" class="view-all-link">View all updates →</a>
+          </div>
+          <div class="updates-list">
+            <article class="update-card">
+              <div class="update-header">
+                <span class="update-date">Week 46, 2025</span>
+              </div>
+              <h3 class="update-title">Week of shipping, learning, and reflecting</h3>
+              <p class="update-content">
+                This week was packed with meaningful progress building for a new experiment, continue with infrastructure cleanup, and celebrating the launch of Buffer's AI Assistant. Prepared a new experiment launching Monday: Built new upgrade modal and repositioned CTAs across one area of the product. Fixed bugs, had monthly reflections with my manager, and learned a valuable lesson about canary releases when my SQS queue refactor took down password reset emails.
+              </p>
+              <div class="update-tags">
+                <span class="update-tag">Infrastructure</span>
+                <span class="update-tag">Experiments</span>
+                <span class="update-tag">Incident Response</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Latest Article Section -->
+        <section class="articles-section">
+          <div class="section-header">
+            <h2 class="section-heading">Latest Article</h2>
+            <a href="/articles" class="view-all-link">View all articles →</a>
+          </div>
+          <div class="articles-list">
+            <article class="article-card">
+              <time class="article-date">October 3, 2025</time>
+              <h3 class="article-title">
+                <a href="https://buffer.com/resources/we-replaced-sms-authentication-with-email-and-authenticator-apps-heres-why/" target="_blank" rel="noopener noreferrer" class="article-link">We Replaced SMS Authentication with Email and Authenticator Apps. Here's Why</a>
+              </h3>
+              <p class="article-excerpt">
+                How we improved Buffer's authentication security by migrating from SMS to more secure methods. A deep dive into the technical and product decisions behind this change.
+              </p>
+              <span class="article-external">
+                <span class="material-symbols-outlined">open_in_new</span>
+                Read on Buffer Blog
+              </span>
+            </article>
+          </div>
+        </section>
+
+        <div id="footer-placeholder"></div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
