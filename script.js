@@ -94,6 +94,7 @@
     const depth = (window.location.pathname.match(/\//g) || []).length - 1;
     const basePath = depth > 0 ? '../' : './';
 
+    await loadComponent('head-fonts', `${basePath}partials/head.html`);
     await loadComponent('nav-placeholder', `${basePath}partials/nav.html`);
     await loadComponent('footer-placeholder', `${basePath}partials/footer.html`);
 
