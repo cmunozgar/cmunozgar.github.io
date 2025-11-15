@@ -5,15 +5,22 @@
   // Function to load HTML partial
   async function loadComponent(elementId, filePath) {
     try {
+      console.log(`Loading component: ${filePath} into ${elementId}`);
       const response = await fetch(filePath);
-      if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const html = await response.text();
       const element = document.getElementById(elementId);
       if (element) {
         element.innerHTML = html;
+        console.log(`Successfully loaded ${filePath}`);
+      } else {
+        console.error(`Element not found: ${elementId}`);
       }
     } catch (error) {
-      console.error('Error loading component:', error);
+      console.error(`Error loading ${filePath}:`, error);
+      console.error('Full error details:', error);
     }
   }
 
