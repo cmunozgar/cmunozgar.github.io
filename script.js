@@ -91,8 +91,17 @@
   // Load components on page load
   async function init() {
     // Determine the base path for partials (adjust based on current page depth)
-    const depth = (window.location.pathname.match(/\//g) || []).length - 1;
-    const basePath = depth > 0 ? '../' : './';
+    const path = window.location.pathname;
+    let basePath = './';
+
+    // Count directory depth (excluding filename)
+    const pathParts = path.split('/').filter(part => part && !part.endsWith('.html'));
+    const depth = pathParts.length;
+
+    // Build the correct relative path
+    if (depth > 0) {
+      basePath = '../'.repeat(depth);
+    }
 
     await loadComponent('nav-placeholder', `${basePath}partials/nav.html`);
     await loadComponent('footer-placeholder', `${basePath}partials/footer.html`);
