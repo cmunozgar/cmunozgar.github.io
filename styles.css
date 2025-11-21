@@ -509,6 +509,12 @@ body {
 
 .banner-card-thread {
   margin-top: 0;
+  display: block;
+}
+
+.banner-card-thread .banner-content {
+  padding-left: calc(48px + 1.5rem);
+  margin-left: 0;
 }
 
 .banner-profile-image-small {
@@ -525,6 +531,10 @@ body {
   .banner-profile-image-small {
     width: 40px;
     height: 40px;
+  }
+
+  .banner-card-thread .banner-content {
+    padding-left: calc(40px + 1.5rem);
   }
 
   .banner-section {
