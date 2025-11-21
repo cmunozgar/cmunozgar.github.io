@@ -11,6 +11,8 @@
       content="Senior Product Engineer specializing in full-stack development, product strategy, and team leadership."
     />
 
+    <script src="assets/js/theme-init.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +27,7 @@
     <link
       rel="shortcut icon"
       type="image/png"
-      href="assets/favicon.png"
+      href="assets/hardhat.svg"
     />
   </head>
   <body>
@@ -45,7 +47,10 @@
               />
             </div>
             <div class="intro-section">
-              <h1 class="name">Carlos Muñoz</h1>
+              <div class="name-with-logo">
+                <h1 class="name">Carlos Muñoz</h1>
+                <img src="assets/hardhat.svg" alt="Logo" class="name-logo" />
+              </div>
               <p class="tagline">Senior Product Engineer</p>
               <p class="bio">
                 I'm a Senior Product Engineer at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>, where I build features that help thousands of businesses manage their social media presence. With over 15 years of experience spanning full-stack development, engineering leadership, and scalable infrastructure, I'm passionate about crafting solutions that balance technical excellence with real user impact.
@@ -66,16 +71,17 @@
           <div class="updates-list">
             <article class="update-card">
               <div class="update-header">
-                <span class="update-date">Week 46, 2025</span>
+                <span class="update-date">Week 47, 2025</span>
               </div>
-              <h3 class="update-title">Week of shipping, learning, and reflecting</h3>
+              <h3 class="update-title">Another week of refactor, cleanup and shipping bug fixes</h3>
               <p class="update-content">
-                This week was packed with meaningful progress building for a new experiment, continue with infrastructure cleanup, and celebrating the launch of Buffer's AI Assistant. Prepared a new experiment launching Monday: Built new upgrade modal and repositioned CTAs across one area of the product. Fixed bugs, had monthly reflections with my manager, and learned a valuable lesson about canary releases when my SQS queue refactor took down password reset emails.
+                Contributed to the team-wide Node 22 upgrade across all services, worked on a new welcome banner to improve first-time user experience, and continued infrastructure cleanup by removing deprecated SendGrid integration and old crons and workers. Had great conversations with teammates to define scope for our next project, and squashed bugs preventing duplicate native posts from showing empty content and posts getting stuck in "Sending". Some weeks are about flashy new features. This one was about making Buffer more reliable and removing tech debt that's been hanging around.
               </p>
               <div class="update-tags">
                 <span class="update-tag">Infrastructure</span>
-                <span class="update-tag">Experiments</span>
-                <span class="update-tag">Incident Response</span>
+                <span class="update-tag">Node 22</span>
+                <span class="update-tag">Bug Fixes</span>
+                <span class="update-tag">Tech Debt</span>
               </div>
             </article>
           </div>
