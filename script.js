@@ -175,19 +175,32 @@
   // Initialize banner dropdown
   function initBannerDropdown() {
     const menuBtn = document.getElementById('banner-menu-btn');
+    const mobileMenuBtn = document.getElementById('banner-mobile-menu-btn');
     const dropdown = document.getElementById('banner-dropdown');
 
-    if (!menuBtn || !dropdown) return;
+    if ((!menuBtn && !mobileMenuBtn) || !dropdown) return;
 
-    // Toggle dropdown on button click
-    menuBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      dropdown.classList.toggle('show');
-    });
+    // Toggle dropdown on desktop button click
+    if (menuBtn) {
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+    }
+
+    // Toggle dropdown on mobile button click
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+    }
 
     // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
-      if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      const isMenuBtn = menuBtn && menuBtn.contains(e.target);
+      const isMobileMenuBtn = mobileMenuBtn && mobileMenuBtn.contains(e.target);
+      if (!isMenuBtn && !isMobileMenuBtn && !dropdown.contains(e.target)) {
         dropdown.classList.remove('show');
       }
     });

@@ -1,19 +1,57 @@
 <div class="banner-card">
-  <div class="banner-profile">
-    <img
-      src="https://secure.gravatar.com/avatar/9f41eeb02505531a36b3429e78bc455d?size=360"
-      alt="Carlos Muñoz"
-      class="banner-profile-image"
-    />
-  </div>
-  <div class="banner-content">
-    <div class="banner-header">
+  <!-- Header: Avatar + Name/Handle + Desktop Menu -->
+  <div class="banner-card-header">
+    <div class="banner-profile">
+      <img
+        src="https://secure.gravatar.com/avatar/9f41eeb02505531a36b3429e78bc455d?size=360"
+        alt="Carlos Muñoz"
+        class="banner-profile-image"
+      />
+    </div>
+    <div class="banner-info">
       <h2 class="banner-name">Carlos Muñoz</h2>
       <span class="banner-handle">@cmunozgar</span>
     </div>
+    <div class="banner-menu-wrapper">
+      <button class="banner-menu" aria-label="More options" id="banner-menu-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+          <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+        </svg>
+      </button>
+      <div class="banner-dropdown" id="banner-dropdown">
+        <a href="/" class="banner-dropdown-item">Home</a>
+        <a href="/updates" class="banner-dropdown-item">Weekly Updates</a>
+        <a href="/articles" class="banner-dropdown-item">Articles</a>
+        <a href="/about" class="banner-dropdown-item">About</a>
+        <div class="banner-dropdown-contact-section">
+          <span class="banner-dropdown-contact-label">Contact</span>
+          <div class="banner-dropdown-contact-items">
+            <a href="mailto:me@cmunozgar.com" class="banner-dropdown-contact-item" aria-label="Email">
+              <span class="material-symbols-outlined">mail</span>
+            </a>
+            <a href="https://www.linkedin.com/in/cmunozgar/" target="_blank" rel="noopener noreferrer" class="banner-dropdown-contact-item" aria-label="LinkedIn">
+              <span class="material-symbols-outlined">work</span>
+            </a>
+            <a href="https://www.threads.com/@cmunozgar" target="_blank" rel="noopener noreferrer" class="banner-dropdown-contact-item" aria-label="Threads">
+              <span class="material-symbols-outlined">alternate_email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content: Text -->
+  <div class="banner-card-content">
     <div class="banner-text-content">
       <!-- Content injected by JavaScript -->
     </div>
+  </div>
+
+  <!-- Actions: Buttons -->
+  <div class="banner-card-actions">
     <div class="banner-actions">
       <button class="banner-action" aria-label="Like">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -35,35 +73,9 @@
       <button class="banner-action" aria-label="Toggle theme" id="banner-theme-toggle">
         <span class="material-symbols-outlined">dark_mode</span>
       </button>
-    </div>
-  </div>
-  <div class="banner-menu-wrapper">
-    <button class="banner-menu" aria-label="More options" id="banner-menu-btn">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
-        <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-        <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
-      </svg>
-    </button>
-    <div class="banner-dropdown" id="banner-dropdown">
-      <a href="/" class="banner-dropdown-item">Home</a>
-      <a href="/updates" class="banner-dropdown-item">Weekly Updates</a>
-      <a href="/articles" class="banner-dropdown-item">Articles</a>
-      <a href="/about" class="banner-dropdown-item">About</a>
-      <div class="banner-dropdown-contact-section">
-        <span class="banner-dropdown-contact-label">Contact</span>
-        <div class="banner-dropdown-contact-items">
-          <a href="mailto:me@cmunozgar.com" class="banner-dropdown-contact-item" aria-label="Email">
-            <span class="material-symbols-outlined">mail</span>
-          </a>
-          <a href="https://www.linkedin.com/in/cmunozgar/" target="_blank" rel="noopener noreferrer" class="banner-dropdown-contact-item" aria-label="LinkedIn">
-            <span class="material-symbols-outlined">work</span>
-          </a>
-          <a href="https://www.threads.com/@cmunozgar" target="_blank" rel="noopener noreferrer" class="banner-dropdown-contact-item" aria-label="Threads">
-            <span class="material-symbols-outlined">alternate_email</span>
-          </a>
-        </div>
-      </div>
+      <button class="banner-action banner-action-mobile-menu" aria-label="Menu" id="banner-mobile-menu-btn">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
     </div>
   </div>
 </div>
