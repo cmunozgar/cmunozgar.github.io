@@ -34,6 +34,110 @@
     return 'home';
   }
 
+  // Banner content configuration per page
+  const bannerContent = {
+    home: {
+      text: [
+        'I\'m a Senior Product Engineer at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>, where I build features that help thousands of businesses manage their social media presence. With over 15 years of experience spanning full-stack development, engineering leadership, and scalable infrastructure, I\'m passionate about crafting solutions that balance technical excellence with real user impact.',
+        'This is where I share my journey in tech—from weekly updates about what I\'m building and learning, to deep dives on product engineering decisions.'
+      ]
+    },
+    updates: {
+      text: ['I share weekly updates about what I\'m working on, learning, and exploring. Each week, I reflect on the features I\'m building at Buffer, technical challenges I\'m tackling, and interesting things I discover along the way—from product decisions to new tools and approaches that catch my attention.']
+    },
+    articles: {
+      text: ['Thoughts on product engineering, team leadership, and building at scale. These are deeper explorations into the craft of building software—lessons learned from managing teams, making technical decisions, and navigating the challenges of growing products and systems.']
+    },
+    about: {
+      text: [
+        'Hi! I\'m Carlos, a Senior Software Engineer on the Core UX team at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>. I live in a small town just outside of Madrid with my wife and our two kids. I\'ve been part of Buffer for over four years now, and it\'s been such a meaningful journey—I had followed Buffer for a long time before joining, and it still feels special to be part of the team.',
+        'Right now, I\'m focused on improving some of the key building blocks of our product experience—from updating legacy parts of the codebase, to bringing consistency across features, to helping shape the future of scheduling and how people build habits in Buffer.'
+      ],
+      isThread: true
+    }
+  };
+
+  // Populate banner content
+  function populateBannerContent() {
+    const currentPage = getCurrentPage();
+    const content = bannerContent[currentPage];
+
+    if (!content) return;
+
+    const bannerTextContent = document.querySelector('.banner-text-content');
+    if (!bannerTextContent) return;
+
+    // For about page (thread), handle specially
+    if (content.isThread) {
+      // First card gets first paragraph
+      bannerTextContent.innerHTML = `<p class="banner-text">${content.text[0]}</p>`;
+
+      // Create thread line and second card
+      const bannerSection = document.querySelector('.banner-section .container');
+      if (bannerSection && content.text[1]) {
+        const threadLine = document.createElement('div');
+        threadLine.className = 'thread-line';
+        bannerSection.appendChild(threadLine);
+
+        const secondCard = document.createElement('div');
+        secondCard.className = 'banner-card banner-card-thread';
+        secondCard.innerHTML = `
+          <div class="banner-profile">
+            <img
+              src="https://secure.gravatar.com/avatar/9f41eeb02505531a36b3429e78bc455d?size=360"
+              alt="Carlos Muñoz"
+              class="banner-profile-image banner-profile-image-small"
+            />
+          </div>
+          <div class="banner-content">
+            <div class="banner-header">
+              <h2 class="banner-name">Carlos Muñoz</h2>
+              <span class="banner-handle">@cmunozgar</span>
+            </div>
+            <p class="banner-text">${content.text[1]}</p>
+            <div class="banner-actions">
+              <button class="banner-action" aria-label="Like">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+              <a href="https://www.linkedin.com/in/cmunozgar/" target="_blank" rel="noopener noreferrer" class="banner-action" aria-label="Message on LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </a>
+              <button class="banner-action" aria-label="Share">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                  <polyline points="16 6 12 2 8 6"></polyline>
+                  <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg>
+              </button>
+              <button class="banner-action" aria-label="Toggle theme" id="banner-theme-toggle">
+                <span class="material-symbols-outlined">dark_mode</span>
+              </button>
+            </div>
+          </div>
+          <div class="banner-menu-wrapper">
+            <button class="banner-menu" aria-label="More options">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+        `;
+        bannerSection.appendChild(secondCard);
+      }
+    } else {
+      // Regular pages - just insert paragraphs
+      bannerTextContent.innerHTML = content.text.map(text =>
+        `<p class="banner-text">${text}</p>`
+      ).join('');
+    }
+  }
+
   // Set active nav link
   function setActiveNavLink() {
     const currentPage = getCurrentPage();
@@ -46,13 +150,11 @@
     });
   }
 
-  // Initialize theme after nav is loaded
+  // Initialize theme after banner is loaded
   function initTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    if (!themeToggle) return;
+    const bannerThemeToggles = document.querySelectorAll('#banner-theme-toggle');
 
     const htmlElement = document.documentElement;
-    const iconElement = themeToggle.querySelector('.material-symbols-outlined');
 
     // Check for saved theme preference or default to light mode
     const currentTheme = localStorage.getItem('theme') || 'light';
@@ -60,21 +162,45 @@
     // Set initial theme
     if (currentTheme === 'dark') {
       htmlElement.setAttribute('data-theme', 'dark');
-      iconElement.textContent = 'light_mode';
     }
 
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', function() {
+    // Update icon states
+    function updateIcons() {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const isDark = currentTheme === 'dark';
+
+      bannerThemeToggles.forEach(toggle => {
+        if (toggle) {
+          const iconElement = toggle.querySelector('.material-symbols-outlined');
+          if (iconElement) {
+            iconElement.textContent = isDark ? 'light_mode' : 'dark_mode';
+          }
+        }
+      });
+    }
+
+    // Initial icon update
+    updateIcons();
+
+    // Function to toggle theme
+    function toggleTheme() {
       const currentTheme = htmlElement.getAttribute('data-theme');
 
       if (currentTheme === 'dark') {
         htmlElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
-        iconElement.textContent = 'dark_mode';
       } else {
         htmlElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        iconElement.textContent = 'light_mode';
+      }
+
+      updateIcons();
+    }
+
+    // Toggle theme on banner button click
+    bannerThemeToggles.forEach(toggle => {
+      if (toggle) {
+        toggle.addEventListener('click', toggleTheme);
       }
     });
 
@@ -83,7 +209,7 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (prefersDark) {
         htmlElement.setAttribute('data-theme', 'dark');
-        iconElement.textContent = 'light_mode';
+        updateIcons();
       }
     }
   }
@@ -108,13 +234,131 @@
       }
     });
 
-    // Close dropdown when clicking on a link
-    const dropdownItems = dropdown.querySelectorAll('.banner-dropdown-item');
+    // Close dropdown when clicking on menu items
+    const dropdownItems = dropdown.querySelectorAll('.banner-dropdown-item, .banner-dropdown-contact-item');
     dropdownItems.forEach(item => {
       item.addEventListener('click', function() {
         dropdown.classList.remove('show');
       });
     });
+  }
+
+  // Initialize like buttons
+  function initLikeButtons() {
+    const currentPage = getCurrentPage();
+    const likeKey = `banner-liked-${currentPage}`;
+
+    // Get all like buttons (first banner-action in each card)
+    const likeButtons = document.querySelectorAll('.banner-action:first-child');
+
+    likeButtons.forEach(button => {
+      // Check if this page is already liked
+      const isLiked = localStorage.getItem(likeKey) === 'true';
+
+      if (isLiked) {
+        button.classList.add('liked');
+      }
+
+      // Add click handler
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Toggle liked state
+        const currentlyLiked = button.classList.contains('liked');
+
+        if (currentlyLiked) {
+          button.classList.remove('liked');
+          localStorage.setItem(likeKey, 'false');
+        } else {
+          button.classList.add('liked');
+          localStorage.setItem(likeKey, 'true');
+
+          // Trigger animation by removing and re-adding the class
+          button.classList.remove('liked');
+          void button.offsetWidth; // Force reflow
+          button.classList.add('liked');
+        }
+      });
+    });
+  }
+
+  // Initialize share buttons
+  function initShareButtons() {
+    // Get all share buttons (third banner-action in each card, after like and message)
+    const shareButtons = document.querySelectorAll('.banner-actions .banner-action:nth-child(3)');
+
+    shareButtons.forEach(button => {
+      button.addEventListener('click', async function(e) {
+        e.preventDefault();
+
+        const url = window.location.href;
+        const title = document.title;
+        const text = document.querySelector('meta[name="description"]')?.content || title;
+
+        // Try Web Share API first (mobile-friendly)
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: title,
+              text: text,
+              url: url
+            });
+            console.log('Shared successfully');
+          } catch (err) {
+            // User cancelled or error occurred
+            if (err.name !== 'AbortError') {
+              console.log('Share failed, falling back to clipboard');
+              copyToClipboard(url, button);
+            }
+          }
+        } else {
+          // Fallback to clipboard
+          copyToClipboard(url, button);
+        }
+      });
+    });
+  }
+
+  // Copy URL to clipboard with visual feedback
+  async function copyToClipboard(url, button) {
+    try {
+      await navigator.clipboard.writeText(url);
+      showCopyFeedback(button);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showCopyFeedback(button);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+      document.body.removeChild(textArea);
+    }
+  }
+
+  // Show "Copied!" feedback
+  function showCopyFeedback(button) {
+    const originalColor = button.style.color;
+    button.style.color = 'var(--accent-color)';
+
+    // Create tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'copy-tooltip';
+    tooltip.textContent = 'Copied!';
+    button.style.position = 'relative';
+    button.appendChild(tooltip);
+
+    // Remove tooltip after animation
+    setTimeout(() => {
+      tooltip.remove();
+      button.style.color = originalColor;
+    }, 2000);
   }
 
   // Load components on page load
@@ -133,11 +377,15 @@
     }
 
     await loadComponent('nav-placeholder', `${basePath}partials/nav.html`);
+    await loadComponent('banner-placeholder', `${basePath}partials/banner.html`);
     await loadComponent('footer-placeholder', `${basePath}partials/footer.html`);
 
+    populateBannerContent();
     setActiveNavLink();
     initTheme();
     initBannerDropdown();
+    initLikeButtons();
+    initShareButtons();
   }
 
   // Run when DOM is ready

@@ -138,11 +138,6 @@ body {
   }
 }
 
-/* Hide nav on home page */
-.home-page .nav {
-  display: none;
-}
-
 /* Theme Toggle */
 .theme-toggle {
   position: fixed;
@@ -192,7 +187,7 @@ body {
 }
 
 [data-theme="dark"] .banner-section {
-  background: var(--bg-primary);
+  background: #283F3E;
 }
 
 .banner-card {
@@ -210,7 +205,7 @@ body {
 }
 
 [data-theme="dark"] .banner-card {
-  background-color: var(--bg-secondary);
+  background-color: #1a1a1a;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -290,6 +285,33 @@ body {
   transform: scale(1.1);
 }
 
+.banner-action.liked {
+  color: #ef4444;
+}
+
+.banner-action.liked svg {
+  fill: #ef4444;
+  animation: likeAnimation 0.5s ease-in-out;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .banner-action:first-child:hover {
   color: #ef4444;
 }
@@ -297,6 +319,7 @@ body {
 .banner-action svg {
   width: 20px;
   height: 20px;
+  transition: fill 0.3s ease;
 }
 
 .banner-menu-wrapper {
@@ -358,7 +381,152 @@ body {
   color: var(--accent-color);
 }
 
+.banner-dropdown-separator {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 0.5rem 0;
+}
+
+.banner-dropdown-section-title {
+  padding: 0.75rem 1rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.banner-dropdown-subitem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.banner-dropdown-subitem .material-symbols-outlined {
+  font-size: 1.125rem;
+}
+
+.banner-dropdown-contact-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  gap: 1rem;
+}
+
+.banner-dropdown-contact-label {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.banner-dropdown-contact-items {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.banner-dropdown-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 0.5rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-speed);
+  text-decoration: none;
+}
+
+.banner-dropdown-contact-item:hover {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.banner-dropdown-contact-item .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+/* Copy tooltip */
+.copy-tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: tooltipFadeIn 0.2s ease-out, tooltipFadeOut 0.3s ease-in 1.7s;
+  z-index: 1000;
+}
+
+.copy-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.25rem solid transparent;
+  border-top-color: var(--text-primary);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes tooltipFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Thread Styles */
+.thread-line {
+  width: 2px;
+  height: 1.5rem;
+  background-color: var(--border-color);
+  margin: 0 auto;
+  max-width: 900px;
+  margin-left: calc((100% - 900px) / 2 + 2rem + 40px);
+  position: relative;
+}
+
+.banner-card-thread {
+  margin-top: 0;
+}
+
+.banner-profile-image-small {
+  width: 48px;
+  height: 48px;
+}
+
 @media (max-width: 768px) {
+  .thread-line {
+    margin-left: calc(50% - 1px);
+    height: 1rem;
+  }
+
+  .banner-profile-image-small {
+    width: 40px;
+    height: 40px;
+  }
+
   .banner-section {
     padding: 2rem 0;
   }
