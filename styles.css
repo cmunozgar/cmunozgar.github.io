@@ -138,6 +138,11 @@ body {
   }
 }
 
+/* Hide nav on home page */
+.home-page .nav {
+  display: none;
+}
+
 /* Theme Toggle */
 .theme-toggle {
   position: fixed;
@@ -175,7 +180,228 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 4rem 0 2rem;
+  padding: 0 0 2rem;
+}
+
+/* Banner Section */
+.banner-section {
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ADDAFF 0%, #89C4F4 100%);
+  padding: 3rem 0;
+  width: 100%;
+}
+
+[data-theme="dark"] .banner-section {
+  background: var(--bg-primary);
+}
+
+.banner-card {
+  background-color: #FFFFF9;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+[data-theme="dark"] .banner-card {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.banner-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  transition: all var(--transition-speed);
+}
+
+.banner-profile-image:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+
+.banner-content {
+  flex: 1;
+}
+
+.banner-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0.75rem;
+}
+
+.banner-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.banner-handle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.banner-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.banner-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.banner-action {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+}
+
+.banner-action:hover {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.banner-action:first-child:hover {
+  color: #ef4444;
+}
+
+.banner-action svg {
+  width: 20px;
+  height: 20px;
+}
+
+.banner-menu-wrapper {
+  position: relative;
+}
+
+.banner-menu {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+}
+
+.banner-menu:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.banner-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.banner-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.banner-dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all var(--transition-speed);
+  font-size: 0.95rem;
+}
+
+.banner-dropdown-item:hover {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .banner-section {
+    padding: 2rem 0;
+  }
+
+  .banner-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .banner-profile-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .banner-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .banner-name {
+    font-size: 1.25rem;
+  }
+
+  .banner-handle {
+    font-size: 0.875rem;
+  }
+
+  .banner-text {
+    font-size: 1rem;
+  }
+
+  .banner-actions {
+    justify-content: center;
+  }
+
+  .banner-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
 }
 
 /* Header */

@@ -30,38 +30,72 @@
       href="assets/hardhat.svg"
     />
   </head>
-  <body>
+  <body class="home-page">
     <div id="nav-placeholder"></div>
 
     <!-- Main Content -->
     <main class="main">
-      <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-          <div class="header-content">
-            <div class="profile-section">
+      <!-- Banner Section -->
+      <section class="banner-section">
+        <div class="container">
+          <div class="banner-card">
+            <div class="banner-profile">
               <img
                 src="https://secure.gravatar.com/avatar/9f41eeb02505531a36b3429e78bc455d?size=360"
                 alt="Carlos Muñoz"
-                class="profile-image"
+                class="banner-profile-image"
               />
             </div>
-            <div class="intro-section">
-              <div class="name-with-logo">
-                <h1 class="name">Carlos Muñoz</h1>
-                <img src="assets/hardhat.svg" alt="Logo" class="name-logo" />
+            <div class="banner-content">
+              <div class="banner-header">
+                <h2 class="banner-name">Carlos Muñoz</h2>
+                <span class="banner-handle">@cmunozgar</span>
               </div>
-              <p class="tagline">Senior Product Engineer</p>
-              <p class="bio">
+              <p class="banner-text">
                 I'm a Senior Product Engineer at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>, where I build features that help thousands of businesses manage their social media presence. With over 15 years of experience spanning full-stack development, engineering leadership, and scalable infrastructure, I'm passionate about crafting solutions that balance technical excellence with real user impact.
               </p>
-              <p class="bio">
+              <p class="banner-text">
                 This is where I share my journey in tech—from weekly updates about what I'm building and learning, to deep dives on product engineering decisions.
               </p>
+              <div class="banner-actions">
+                <button class="banner-action" aria-label="Like">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+                <button class="banner-action" aria-label="Comment">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </button>
+                <button class="banner-action" aria-label="Share">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                    <polyline points="16 6 12 2 8 6"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="banner-menu-wrapper">
+              <button class="banner-menu" aria-label="More options" id="banner-menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
+                  <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                  <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+                </svg>
+              </button>
+              <div class="banner-dropdown" id="banner-dropdown">
+                <a href="/updates" class="banner-dropdown-item">Weekly Updates</a>
+                <a href="/articles" class="banner-dropdown-item">Articles</a>
+                <a href="/about" class="banner-dropdown-item">About</a>
+              </div>
             </div>
           </div>
-        </header>
+        </div>
+      </section>
 
+      <div class="container">
         <!-- Latest Update Section -->
         <section class="building-section">
           <div class="section-header">

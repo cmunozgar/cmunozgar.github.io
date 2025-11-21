@@ -88,6 +88,35 @@
     }
   }
 
+  // Initialize banner dropdown
+  function initBannerDropdown() {
+    const menuBtn = document.getElementById('banner-menu-btn');
+    const dropdown = document.getElementById('banner-dropdown');
+
+    if (!menuBtn || !dropdown) return;
+
+    // Toggle dropdown on button click
+    menuBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Close dropdown when clicking on a link
+    const dropdownItems = dropdown.querySelectorAll('.banner-dropdown-item');
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', function() {
+        dropdown.classList.remove('show');
+      });
+    });
+  }
+
   // Load components on page load
   async function init() {
     // Determine the base path for partials (adjust based on current page depth)
@@ -108,6 +137,7 @@
 
     setActiveNavLink();
     initTheme();
+    initBannerDropdown();
   }
 
   // Run when DOM is ready
