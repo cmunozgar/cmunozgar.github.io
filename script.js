@@ -50,10 +50,8 @@
     },
     about: {
       text: [
-        'Hi! I\'m Carlos, a Senior Software Engineer on the Core UX team at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>. I live in a small town just outside of Madrid with my wife and our two kids. I\'ve been part of Buffer for over four years now, and it\'s been such a meaningful journey—I had followed Buffer for a long time before joining, and it still feels special to be part of the team.',
-        'Right now, I\'m focused on improving some of the key building blocks of our product experience—from updating legacy parts of the codebase, to bringing consistency across features, to helping shape the future of scheduling and how people build habits in Buffer.'
-      ],
-      isThread: true
+        'Hi! I\'m Carlos, a Senior Software Engineer on the Core UX team at <a href="https://www.buffer.com" target="_blank" rel="noopener noreferrer" class="link-accent">Buffer</a>. I live in a small town just outside of Madrid with my wife and our two kids. I\'ve been part of Buffer for over four years now, and it\'s been such a meaningful journey—I had followed Buffer for a long time before joining, and it still feels special to be part of the team. Right now, I\'m focused on improving some of the key building blocks of our product experience—from updating legacy parts of the codebase, to bringing consistency across features, to helping shape the future of scheduling and how people build habits in Buffer.'
+      ]
     }
   };
 
@@ -97,12 +95,18 @@
   }
 
   // Set active nav link
-  function setActiveNavLink() {
+  function setActivePageNavLink() {
     const currentPage = getCurrentPage();
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.page-nav-link');
     navLinks.forEach(link => {
+      const href = link.getAttribute('href');
       link.classList.remove('active');
-      if (link.getAttribute('data-page') === currentPage) {
+
+      // Match current page with navigation link
+      if ((currentPage === 'home' && href === '/') ||
+          (currentPage === 'updates' && href === '/updates') ||
+          (currentPage === 'articles' && href === '/articles') ||
+          (currentPage === 'about' && href === '/about')) {
         link.classList.add('active');
       }
     });
@@ -206,12 +210,21 @@
     });
 
     // Close dropdown when clicking on menu items
-    const dropdownItems = dropdown.querySelectorAll('.banner-dropdown-item, .banner-dropdown-contact-item');
+    const dropdownItems = dropdown.querySelectorAll('.banner-dropdown-item');
     dropdownItems.forEach(item => {
       item.addEventListener('click', function() {
         dropdown.classList.remove('show');
       });
     });
+
+    // Handle block button
+    const blockBtn = document.getElementById('banner-block-btn');
+    if (blockBtn) {
+      blockBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.close();
+      });
+    }
   }
 
   // Initialize like buttons
@@ -366,12 +379,12 @@
       basePath = '../'.repeat(depth);
     }
 
-    await loadComponent('nav-placeholder', `${basePath}partials/nav.html`);
     await loadComponent('banner-placeholder', `${basePath}partials/banner.html`);
+    await loadComponent('page-nav-placeholder', `${basePath}partials/nav.html`);
     await loadComponent('footer-placeholder', `${basePath}partials/footer.html`);
 
     populateBannerContent();
-    setActiveNavLink();
+    setActivePageNavLink();
     initTheme();
     initBannerDropdown();
     initLikeButtons();
